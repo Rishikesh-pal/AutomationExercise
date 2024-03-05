@@ -1,0 +1,15 @@
+{
+  "name": "apollo",
+  "version": "1.0.0",
+  "description": "This is the project on automationexercise.com using cypress",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "author": "rishikesh-pal",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "12.5.1"
+  }
+}
