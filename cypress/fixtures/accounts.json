@@ -1,0 +1,12 @@
+{
+  "valid": {
+    "email": "momaho2021@hidelux.com",
+    "password": "qwerty",
+    "userName": "John snow"
+  },
+  "invalid": {
+    "email": "qwerty@qwerty.com",
+    "password": "qwerty",
+    "userName": "qwerty"
+  }
+}

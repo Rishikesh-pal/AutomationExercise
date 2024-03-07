@@ -1,4 +1,4 @@
-///<reference types = "cypress"/>
+///<reference types = 'cypress'/>
 
 import { homePageObjects } from "../page_objects/home_page_objects";
 import { loginPageObject } from "../page_objects/login_page_objects";
@@ -8,7 +8,7 @@ const homepageobject = new homePageObjects();
 
 let testData;
 
-describe('The Login tests with correct user name and password',()=>{
+describe('The Login tests with incorrect user name and password',()=>{
 
     before('Get Test data for testing from fixture',()=>{
         cy.fixture('accounts.json').then((data)=>{
@@ -16,14 +16,15 @@ describe('The Login tests with correct user name and password',()=>{
         });
     });
 
-    it('Login',()=>{
-        cy.visit('/');
+    it('Test',()=>{
+        w
         homepageobject.getFeatureRotator().eq(0).should('be.visible');
         homepageobject.getLoginButton().click();
         cy.url('eq','login');
-        loginpageobject.getLoginMailTextBox().type(testData.valid.email);
-        loginpageobject.getLoginPassword().type(testData.valid.password);
+        loginpageobject.getLoginMailTextBox().type(testData.invalid.email);
+        loginpageobject.getLoginPassword().type(testData.invalid.password);
         loginpageobject.getLoginButton().click();
-        homepageobject.getUserName().should('include.text',testData.valid.userName);
+        loginpageobject.getinvalidMessage().should('have.text','Your email or password is incorrect!');
     });
+
 });
