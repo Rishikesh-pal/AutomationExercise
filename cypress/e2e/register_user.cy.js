@@ -9,8 +9,6 @@ const loginpageobject = new loginPageObject();
 const homepageobject = new homePageObjects();
 const signuppageobject = new signupPageObject();
 
-let testData;
-
 // 1. Launch browser
 // 2. Navigate to url 'http://automationexercise.com'
 // 3. Verify that home page is visible successfully
@@ -45,7 +43,27 @@ describe('The register user tests', () => {
         loginpageobject.getSignupName().type(faker.internet.userName());
         loginpageobject.getSignupEmail().type(faker.internet.email());
         loginpageobject.clickSignupButton();
-        signuppageobject.getHeader().eq(0).should('have.text','ENTER ACCOUNT INFORMATION');
+        // signuppageobject.getHeader().eq(0).children().should('have.css','<b>');
+        signuppageobject.getGenderMale().check();
+        signuppageobject.getName().should('not.have.value', '');
+        signuppageobject.getEmail().should('be.disabled');
+        signuppageobject.getPassword().type(faker.internet.password());
+        signuppageobject.getDays().select(faker.number.int({ min: 1, max: 30 }));
+        signuppageobject.getMonths().select(faker.date.month());
+        signuppageobject.getYear().select(faker.number.int({ min: 1, max: 80 }));
+        signuppageobject.getNewsLetter().check().should('be.checked');
+        signuppageobject.getSpecialOffers().check().should('be.checked');
+        signuppageobject.getFirstName().type(faker.person.firstName());
+        signuppageobject.getLastName().type(faker.person.lastName());
+        signuppageobject.getCompany().type(faker.company.buzzNoun());
+        signuppageobject.getAddress1().type(faker.location.secondaryAddress());
+        signuppageobject.getAddress2().type(faker.location.secondaryAddress());
+        signuppageobject.getCountry().select(faker.number.int({ min: 0, max: 6 }));
+        signuppageobject.getState().type(faker.location.state());
+        signuppageobject.getCity().type(faker.location.city());
+        signuppageobject.getZipCode().type(faker.location.zipCode());
+        signuppageobject.getMobileNumber().type(faker.phone.number());
+        signuppageobject.clickCreateAccount();
 
     });
 });
