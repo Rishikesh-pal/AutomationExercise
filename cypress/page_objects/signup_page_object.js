@@ -1,7 +1,7 @@
-export class signupPageObject{
+export class SignupPageObject{
 
     getHeader(){
-        return cy.get('.title.text-center');
+        return cy.get('.login-form h2:nth-child(1)');
     }
 
     getGenderMale(){
@@ -86,5 +86,17 @@ export class signupPageObject{
 
     clickCreateAccount(){
         return cy.get('[data-qa="create-account"]').click();
+    }
+
+    getAccountCreationText(){
+        return cy.get('[data-qa="account-created"]');
+    }
+
+    getContinueButton(){
+        return cy.get('[data-qa="continue-button"]');
+    }
+
+    getAccountDeletedText(){
+        return cy.get('[data-qa="account-deleted"]');
     }
 }

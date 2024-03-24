@@ -1,4 +1,4 @@
-export class homePageObjects{
+export class HomePageObjects{
 
     
     getLoginButton(){
@@ -11,5 +11,13 @@ export class homePageObjects{
 
     getUserName(){
         return cy.get('[class="nav navbar-nav"] li:nth-child(10)> a> b');
+    }
+
+    getLoginUser(){
+        return cy.get('li:nth-child(10)').children();
+    }
+
+    getDeleteAcoount(){
+        return cy.get('.nav.navbar-nav li:nth-child(5)');
     }
 } 

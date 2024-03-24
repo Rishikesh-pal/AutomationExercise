@@ -1,4 +1,4 @@
-export class loginPageObject{
+export class LoginPageObject{
 
     getLoginMailTextBox(){
         return cy.get('[data-qa="login-email"]');
