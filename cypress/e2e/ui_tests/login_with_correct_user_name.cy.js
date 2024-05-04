@@ -1,7 +1,7 @@
 ///<reference types = "cypress"/>
 
-import { HomePageObjects } from "../../page_objects/home_page_objects";
-import { LoginPageObject } from "../../page_objects/login_page_objects";
+const { HomePageObjects } = require("../../page_objects/home_page_objects");
+const { LoginPageObject } = require("../../page_objects/login_page_objects");
 
 const loginpageobject= new LoginPageObject();
 const homepageobject = new HomePageObjects();

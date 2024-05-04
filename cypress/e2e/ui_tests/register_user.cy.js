@@ -1,9 +1,11 @@
 ///<reference types = "cypress"/>
 
-import { HomePageObjects } from "../page_objects/home_page_objects";
-import { LoginPageObject } from "../page_objects/login_page_objects";
-import { SignupPageObject } from "../page_objects/signup_page_object";
+
 import { faker } from "@faker-js/faker"
+import { LoginPageObject } from "../../page_objects/login_page_objects";
+import { HomePageObjects } from "../../page_objects/home_page_objects";
+import { SignupPageObject } from "../../page_objects/signup_page_object";
+
 
 const loginPageObject = new LoginPageObject();
 const homePageObject = new HomePageObjects();

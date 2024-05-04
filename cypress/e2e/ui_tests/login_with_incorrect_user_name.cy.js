@@ -17,7 +17,7 @@ describe('The Login tests with incorrect user name and password',()=>{
     });
 
     it('Test',()=>{
-        w
+        cy.visit('/');
         homepageobject.getFeatureRotator().eq(0).should('be.visible');
         homepageobject.getLoginButton().click();
         cy.url('eq','login');
