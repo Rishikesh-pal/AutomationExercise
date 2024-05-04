@@ -1,10 +1,10 @@
 ///<reference types = "cypress"/>
 
-import { homePageObjects } from "../page_objects/home_page_objects";
-import { loginPageObject } from "../page_objects/login_page_objects";
+import { HomePageObjects } from "../../page_objects/home_page_objects";
+import { LoginPageObject } from "../../page_objects/login_page_objects";
 
-const loginpageobject= new loginPageObject();
-const homepageobject = new homePageObjects();
+const loginpageobject= new LoginPageObject();
+const homepageobject = new HomePageObjects();
 
 let testData;
 

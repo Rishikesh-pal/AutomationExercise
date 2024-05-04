@@ -1,5 +1,3 @@
-#This repository contain Automation project on automationexercise.com that isan e-comerce website
-
 # Automation Exercise Project
 
 This project contains automated tests for the [automationexercise.com](https://www.automationexercise.com/) website. The tests cover both UI and API testing using Cypress.
@@ -12,7 +10,6 @@ This project contains automated tests for the [automationexercise.com](https://w
 - [Project Structure](#project-structure)
 - [Test Cases](#Test-Cases)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -42,8 +39,7 @@ This project aims to automate testing of the `automationexercise.com` website to
 
 1. Cypress - 12.11.0
 2. Faker
-3. Mochaawesome reports
-4. 
+3. MochaAwesome reports
 
 ## Running Tests
 
@@ -63,8 +59,13 @@ To run the tests, execute the following command:
 
 ## Project Structure
 The project is structured as follows:
-
-
+1. fixtures: Test data in form of key-value pairs for the tests are maintained here.
+2. integration: Test cases for the framework are maintained here.
+3. support: Reusable methods or customized commands, which can be utilised by test cases directly, without object creation are created here.
+4. videos: Executed test steps are recorded in the form of videos and maintained here.
+5. node_modules: Project dependencies from the npm are maintained in this folder. It is the heart of the Cypress project execution.
+6. cypress.json: Default configurations are set in this folder. The values of the current configurations can be modified here, which overrules the default configurations.
+7. package.json: Dependencies and scripts for the projects are maintained in this folder.
 
 ## Test Cases
 
@@ -125,6 +126,28 @@ The project is structured as follows:
 9. Click 'Logout' button
 10. Verify that user is navigated to login page
 
+ **Test Case 5: Place Order: Register while Checkout**
+1. Launch browser
+2. Navigate to url 'http://automationexercise.com'
+3. Verify that home page is visible successfully
+4. Add products to cart
+5. Click 'Cart' button
+6. Verify that cart page is displayed
+7. Click Proceed To Checkout
+8. Click 'Register / Login' button
+9. Fill all details in Signup and create account
+10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
+11. Verify ' Logged in as username' at top
+12. Click 'Cart' button
+13. Click 'Proceed To Checkout' button
+14. Verify Address Details and Review Your Order
+15. Enter description in comment text area and click 'Place Order'
+16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
+17. Click 'Pay and Confirm Order' button
+18. Verify success message 'Your order has been placed successfully!'
+19. Click 'Delete Account' button
+20. Verify 'ACCOUNT DELETED!' and click 'Continue' button
+
 ### ***API Tests:***
 
 **API 1: Get All Products List** 
@@ -153,6 +176,20 @@ The project is structured as follows:
 - Request Parameters: email, password
 - Response Code: 200
 - Response Message: User exists!
+
+**API 5: POST To Create/Register User Account**
+- API URL: https://automationexercise.com/api/createAccount
+- Request Method: POST
+- Request Parameters: name, email, password, title (for example: Mr, Mrs, Miss), birth_date, birth_month, birth_year, firstname,lastname, company, address1, address2, country, zipcode, state, city, mobile_number
+- Response Code: 201
+- Response Message: User created!
+
+**API 6: DELETE METHOD To Delete User Account**
+- API URL: https://automationexercise.com/api/deleteAccount
+- Request Method: DELETE
+- Request Parameters: email, password
+- Response Code: 200
+- Response Message: Account deleted!
 
 ## Contributing
 If you wish to contribute to this project, you can follow these steps:

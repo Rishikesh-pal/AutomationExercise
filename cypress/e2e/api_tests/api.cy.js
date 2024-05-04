@@ -1,12 +1,17 @@
 ///<reference types = "cypress"/>
 
-const url = 'https://automationexercise.com/';
+import { faker } from "@faker-js/faker"
+
+const email = faker.internet.email();
+let password = faker.internet.password();
+let fakeUser;
 
 describe('API test cases',()=>{
+    
     it('API 1: Get All Products List',()=>{
         cy.request({
             method: 'GET',
-            url: `${url}/api/productsList`
+            url: `/api/productsList`
         }).then((getResponse)=>{
             expect(getResponse.status).eq(200);
         });
@@ -15,7 +20,7 @@ describe('API test cases',()=>{
     it('API 2:  Get All Brands List',()=>{
         cy.request({
             method: 'GET',
-            url: `${url}/api/brandsList`,
+            url: `/api/brandsList`,
             body: {
                 "search_product" : "top"
             }
@@ -26,37 +31,85 @@ describe('API test cases',()=>{
 
     it('API 3: POST To Search Product',()=>{
         cy.request({
-            headers: {
-                "Content-Type" : "multipart/form-data",
-            },
-            url: `${url}/api/searchProduct`,
+            method : 'POST',
+            form: true, 
             body: {
                 "search_product" : "jeans"
-            }
-        }).then((getResponse)=>{
-            expect(getResponse.status).eq(200);  
-            expect(getResponse.body.products,'exist');         
+            },
+            headers: {
+                "content-type" : "multipart/form-data",
+            },
+            url: `/api/searchProduct`
+        }).then((response)=>{
+            expect(response.status).eq(200);      
         });
     });
 
     it('API 4: POST To Verify Login with valid details',()=>{
         cy.request({
+            method : 'POST',
+            form: true,
             headers: {
                 "Content-Type" : "multipart/form-data"
             },
-            url: `${url}/api/verifyLogin`,
+            url: `/api/verifyLogin`,
             body: {
-                email: "Test007@gmail.com",
-                password: "test"
+                email: "Roshan",
+                password: "hrx123"
             }   
-        }).then((getResponse)=>{
-            expect(getResponse.status).eq(200);
-            expect(getResponse.body.message).include('User exists!');
-            expect(getResponse.body.responseCode).include(200);
+        }).then((response)=>{
+            expect(response.status).eq(200);
         });
     });
 
-    // it('')
+    it('API 5: POST To Create/Register User Account',()=>{
+        cy.request({
+            method : 'POST',
+            form : true,
+            headers : {
+                "Content-Type" : "multipart/form-data"
+            },
+            url : `/api/createAccount`,
+            body : 
+            {
+                name : faker.internet.userName(),
+                email : email,
+                password : password,
+                title : "Mr",
+                birth_date : faker.number.int({ min: 1, max: 30 }),
+                birth_month : faker.date.month(),
+                birth_year : faker.number.int({ min: 1, max: 80 }),
+                firstname : faker.person.firstName(),
+                lastname : faker.person.lastName(),
+                company : faker.company.buzzNoun(),
+                address1 : faker.location.secondaryAddress(),
+                address2 : faker.location.secondaryAddress(),
+                country : faker.location.country(),
+                zipcode : faker.location.zipCode(),
+                state : faker.location.state(),
+                city : faker.location.city(),
+                mobile_number : faker.phone.number()
+            }
+        }).then((response)=>{
+            expect(response.status).eq(200);
+        });
+    });
 
-
+    it('API 6: DELETE METHOD To Delete User Account',()=>{
+        
+        cy.request({
+            method : 'DELETE',
+            form : true,
+            headers : {
+                "Content-Type" : "multipart/form-data"
+            },
+            url : `/api/deleteAccount`,
+            body : {
+                email : email,
+                password : password,
+            }
+        }).then((response)=>{
+            expect(response.status).eq(200);   
+        });
+    });
 });

@@ -2,8 +2,8 @@
 
 import { HomePageObjects } from "../page_objects/home_page_objects";
 import { LoginPageObject } from "../page_objects/login_page_objects";
-import { faker } from "@faker-js/faker"
 import { SignupPageObject } from "../page_objects/signup_page_object";
+import { faker } from "@faker-js/faker"
 
 const loginPageObject = new LoginPageObject();
 const homePageObject = new HomePageObjects();
@@ -11,7 +11,7 @@ const signupPageObject = new SignupPageObject();
 
 describe('The register user tests', () => {
 
-    before('Get Test data for testing from fixture', () => {
+    before('Visit to base URL', () => {
         cy.visit('/');
     });
 
